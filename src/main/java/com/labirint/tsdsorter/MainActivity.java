@@ -1,35 +1,17 @@
 package com.labirint.tsdsorter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-
 
 import android.os.Build;
 import android.os.Bundle;
 
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.EditText;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import com.honeywell.aidc.*;
 import com.labirint.dataaccess.BarCode;
 import com.labirint.dataaccess.ExitActivity;
 import com.labirint.dataaccess.Query;
