@@ -20,21 +20,20 @@ public class Msg extends com.labirint.dataaccess.Msg {
 
     @Override
     protected void setPrefixSays() {
-        prefixSays.put(BarCode.Prefix.BADGE, new MsgString(" Сканируй пропуск ", R.drawable.bage));
-        prefixSays.put(BarCode.Prefix.Command, new MsgString(" Сканируй команду ", R.drawable.command));
-        prefixSays.put(BarCode.Prefix.Stretch, new MsgString(" Сканируй стрейч ",  R.drawable.box));
-        prefixSays.put(BarCode.Prefix.PLACE, new MsgString(" Сканируй адрес ", R.drawable.place));
-        //prefixSays.put(BarCode.Prefix.StretchOrPlace, new MsgString(" Сканируй стрейч \\или\\адрес снятия ", 0)); // R.drawable.place));
-        //prefixSays.put(BarCode.Prefix.Invoice, new MsgString(" Сканируй лист \\накладной", 0)); // R.drawable.place));
+
+        prefixSays.Add(new MsgString(" Сканируй пропуск ", R.drawable.bage, BarCode.Prefix.BADGE));
+        prefixSays.Add(new MsgString(" Сканируй команду ", R.drawable.command, BarCode.Prefix.COMMAND));
+        prefixSays.Add(new MsgString(" Сканируй стрейч ",  R.drawable.box, BarCode.Prefix.STRETCH));
+        prefixSays.Add(new MsgString(" Сканируй адрес ", R.drawable.place, BarCode.Prefix.PLACE));
 
     }
 
     @Override
     public boolean NotExpect(BarCode barcode) {
-        boolean b =  !((barcode.getPrefix() == expect_barcode)
+        boolean b =  !(barcode.inPrefixes(expect_barcode)
                 || barcode.getPrefix() == BarCode.Prefix.BADGE
-                || (barcode.getPrefix() == BarCode.Prefix.Command && GlobVars.isCommandClose(barcode) && expect_barcode != BarCode.Prefix.BADGE)
-                || (barcode.equals(GlobVars.BARCODE_CANCEL) && expect_barcode != BarCode.Prefix.BADGE && expect_barcode != BarCode.Prefix.Command)
+                || (barcode.getPrefix() == BarCode.Prefix.COMMAND && GlobVars.isCommandClose(barcode) && expect_barcode[0] != BarCode.Prefix.BADGE)
+                || (barcode.equals(GlobVars.BARCODE_CANCEL) && expect_barcode[0] != BarCode.Prefix.BADGE && expect_barcode[0] != BarCode.Prefix.COMMAND)
         );
 
         if (b) {Alert();}

@@ -22,8 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:versionCode="11"
-        android:versionName="2.0">
+        android:versionCode="12"
+        android:versionName="2.1">
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
