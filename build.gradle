@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.labirint.tsdsorter"
-        minSdkVersion 19
+        minSdkVersion 24
         targetSdkVersion 29
         versionCode 12
         versionName "2.1"
