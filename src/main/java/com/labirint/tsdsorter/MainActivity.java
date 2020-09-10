@@ -66,7 +66,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
         tsd = Scanner.newInstance(this, this, Build.MODEL);
         msg = new Msg(textView, mainLayout);
 
-        msg.Say(BarCode.Prefix.BADGE);
+        msg.Say(Prefix.BADGE);
 
     }
 
@@ -124,7 +124,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                 if (GlobVars.isCommandClose(barcode)) {
                     glob_var.setCommand(GlobVars.COMMAND_NO);
 
-                    msg.Say(BarCode.Prefix.COMMAND);
+                    msg.Say(Prefix.COMMAND);
                     this.setTitle("Команда");
                     tsd.go();
 
@@ -134,7 +134,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
 
                     case GlobVars.COMMAND_ARRANGE:
                         this.setTitle("Расстановка");
-                        msg.Say(BarCode.Prefix.STRETCH);
+                        msg.Say(Prefix.STRETCH);
                         tsd.go();
                         break;
 
@@ -146,7 +146,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
 
                     case GlobVars.COMMAND_REMOVE_ONE:
                         this.setTitle("Снять один");
-                        msg.Say(BarCode.Prefix.PLACE);
+                        msg.Say(Prefix.PLACE);
                         tsd.go();
                         break;
 
@@ -160,7 +160,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
 
                                 glob_var.setCommand(GlobVars.COMMAND_ARRANGE);
                                 glob_var.setIdPlace(0);
-                                msg.Say(BarCode.Prefix.STRETCH);
+                                msg.Say(Prefix.STRETCH);
                                 tsd.go();
 
 
@@ -171,7 +171,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                             default:
 
                                 glob_var.setCommand(GlobVars.COMMAND_NO);
-                                msg.Say(BarCode.Prefix.COMMAND);
+                                msg.Say(Prefix.COMMAND);
                                 this.setTitle("Команда");
                                 tsd.go();
 
@@ -183,7 +183,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
 
                     default:
 
-                        msg.Alert("Незнакомая команда!", BarCode.Prefix.COMMAND);
+                        msg.Alert("Незнакомая команда!", Prefix.COMMAND);
                         tsd.go();
 
                         break;
@@ -284,7 +284,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
 
         if (glob_var.getIdSales() == -1 || glob_var.getStretch() == -1)
         {
-            msg.Alert("ШК не распознается!", BarCode.Prefix.STRETCH);
+            msg.Alert("ШК не распознается!", Prefix.STRETCH);
             tsd.go();
         }
         else
@@ -329,7 +329,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                             @Override
                             public void run() {
                                 //msg.Say(Msg.SCAN_PLACE);
-                                msg.Say(finalTxt, BarCode.Prefix.PLACE);
+                                msg.Say(finalTxt, Prefix.PLACE);
                             }
                         });
                     }
@@ -341,7 +341,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                msg.Alert(finalTxt, BarCode.Prefix.STRETCH);
+                                msg.Alert(finalTxt, Prefix.STRETCH);
                              //   msg.Alert();
                             }
                         });
@@ -355,7 +355,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                         @Override
                         public void run() {
                             glob_var.setIdPlace(-1);
-                            msg.Alert("fnTSDGetInfoForPutOnAdress\\не вернул строку", BarCode.Prefix.STRETCH);
+                            msg.Alert("fnTSDGetInfoForPutOnAdress\\не вернул строку", Prefix.STRETCH);
                         }
                     });
                 }
@@ -381,7 +381,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
         glob_var.setIdSales(-1);
         glob_var.setStretch(-1);
         glob_var.setIdPlace(-1);
-        msg.Say(BarCode.Prefix.STRETCH);
+        msg.Say(Prefix.STRETCH);
         tsd.go();
 
     }
@@ -418,7 +418,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            msg.Say(getResources().getString(R.string.say_scan_box) + "\\" + glob_var.getPlace().getPlace(), BarCode.Prefix.PLACE);
+                            msg.Say(getResources().getString(R.string.say_scan_box) + "\\" + glob_var.getPlace().getPlace(), Prefix.PLACE);
                             tsd.go();
 
                         }
@@ -429,7 +429,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            msg.Alert("Нет мест к снятию!", BarCode.Prefix.COMMAND);
+                            msg.Alert("Нет мест к снятию!", Prefix.COMMAND);
                             ((AppCompatActivity) getThis()).setTitle("Команда");
                             tsd.go();
                         }
@@ -489,7 +489,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                         if (glob_var.getPlace() == null) {
                             // режим снять один
 
-                            msg.Say("OK!\\Ящик снят", BarCode.Prefix.PLACE);
+                            msg.Say("OK!\\Ящик снят", Prefix.PLACE);
 
                             handler.postDelayed(
 
@@ -497,7 +497,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                                         @Override
                                         public void run() {
 
-                                            msg.Say(BarCode.Prefix.PLACE);
+                                            msg.Say(Prefix.PLACE);
 
 
                                         }
@@ -513,7 +513,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
 //                            if (glob_var.places.size() > glob_var.indx_places) {
                                 glob_var.setPlace(null);
 
-                                msg.Say("OK", BarCode.Prefix.PLACE);
+                                msg.Say("OK", Prefix.PLACE);
 
                                 handler.postDelayed(
 
@@ -541,7 +541,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                             public void run() {
 
                                 glob_var.setIdPlace(0);
-                                msg.Alert("Ошибка снятия\\Попробуйте еще раз!", BarCode.Prefix.PLACE);
+                                msg.Alert("Ошибка снятия\\Попробуйте еще раз!", Prefix.PLACE);
                                 tsd.go();
                             }
                         });
@@ -557,7 +557,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                         public void run() {
 
                             glob_var.setIdPlace(0);
-                            msg.Alert("Ошибка spTSDRemoveFromAdress", BarCode.Prefix.COMMAND);
+                            msg.Alert("Ошибка spTSDRemoveFromAdress", Prefix.COMMAND);
                             tsd.go();
                         }
                     });
@@ -602,7 +602,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                         String name = j.getString("name");
                         glob_var.setManager(name);
                         textManager.setText(glob_var.getManager());
-                        msg.Say(BarCode.Prefix.COMMAND);
+                        msg.Say(Prefix.COMMAND);
                         ((AppCompatActivity)getThis()).setTitle("Команда");
 
                     } else {
@@ -615,7 +615,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                msg.Alert(finalStr_error, Msg.LONG_ALERT, 0, BarCode.Prefix.BADGE);
+                                msg.Alert(finalStr_error, Msg.LONG_ALERT, 0, Prefix.BADGE);
                             }
                         });
 
@@ -628,7 +628,7 @@ public class MainActivity extends com.labirint.dataaccess.MainActivity implement
                      @Override
                      public void run() {
                          glob_var.setIdPerson(-1);
-                         msg.Alert("fnGetStuffInfoForPerson\\Ошибка кода сотрудника!", BarCode.Prefix.BADGE);
+                         msg.Alert("fnGetStuffInfoForPerson\\Ошибка кода сотрудника!", Prefix.BADGE);
                      }
                  });
                 }
