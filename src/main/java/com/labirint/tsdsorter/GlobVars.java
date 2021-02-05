@@ -1,7 +1,8 @@
 package com.labirint.tsdsorter;
 
+
 import com.labirint.dataaccess.BarCode;
-import com.labirint.dataaccess.Query;
+
 
 public class GlobVars extends Query {
 
