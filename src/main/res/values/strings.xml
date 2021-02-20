@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">ТСД Сортер</string>
+    <string name="app_name">Сортер ИМ</string>
 
     <string name="say_scan_bage">Сканируй пропуск</string>
     <string name="say_scan_command">Сканируй команду</string>
     <string name="say_scan_stretch">Сканируй стрейч</string>
     <string name="say_scan_place">Сканируй адрес</string>
     <string name="say_scan_box">Сканируй место</string>
+    <string name="no_connection_try_later">Нет сети!\nПопробуйте позже!</string>
 </resources>
