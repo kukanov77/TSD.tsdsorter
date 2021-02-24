@@ -11,9 +11,11 @@ public class Values {
     private int id = 0;
     private int idPerson = 0;
     private String name = "";
-    private int idPlace;
+    private int idPlace = 0;
     private String Place = "";
-    private int idBox;
+    private int idBox = 0;
+    private int idSales = 0;
+    private int stretch = 0;
 
 
     // ----------------------------------------------------------------------------------------
@@ -64,6 +66,22 @@ public class Values {
 
     public int getIdBox() {
         return idBox;
+    }
+
+    public void setIdSales(int idSales) {
+        this.idSales = idSales;
+    }
+
+    public void setStretch(int stretch) {
+        this.stretch = stretch;
+    }
+
+    public int getIdSales() {
+        return idSales;
+    }
+
+    public int getStretch() {
+        return stretch;
     }
 
     // ----------------------------------------------------------------------------------------

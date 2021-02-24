@@ -19,15 +19,6 @@ import com.labirint.tsdsorter.interactors.scankeys.Scankeys;
 import com.labirint.tsdsorter.interactors.RunnableUseCase;
 import com.labirint.tsdsorter.entities.values.ValuesRepository;
 
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.BAGE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_ARRANGE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_GET;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_GET_ONE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.EAN13;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.FINISH;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.PLACE;
-
-
 public class WorkViewModel extends BaseViewModel implements MsgViewModel {
 
     public QueryHelper queryHelper;
@@ -52,34 +43,18 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
         this.queryHelper = queryHelper;
         this.valuesRepository = valuesRepository;
         valuesRepository.getPersonText().subscribe(txt -> personText.set(new SpannableString(txt)));
-        this.scanUseCase = new ScanUseCase(new Scankeys());
+
+        run = new RunnableUseCase(this);
+        this.scanUseCase = new ScanUseCase(new Scankeys(), run);
+
         msg = new MsgHelper(this);
         msg.getOnSay().subscribe(b -> onSay.setValue(b));
 
-        run = new RunnableUseCase(this);
+
 
         scanUseCase.getAlert().subscribe(txt -> msg.alert(txt));
 
         title.setValue("Авторизация");
-
-        scanUseCase.put(run.getPerson, BAGE);
-
-        // расстановка
-        scanUseCase.put(run.cmdArrange, BAGE, CMD_ARRANGE);
-//        scanUseCase.put(run.runArrangeBox, BAGE, CMD_ARRANGE, EAN13);
-//        scanUseCase.put(run.runArrangeBoxPlace, BAGE, CMD_ARRANGE, EAN13, PLACE);
-//        scanUseCase.put(run.cmdFinish, BAGE, CMD_ARRANGE, EAN13, FINISH);
-//        scanUseCase.put(run.cmdFinish, BAGE, CMD_ARRANGE, FINISH);
-        // снятие
-        scanUseCase.put(run.cmdGet, BAGE, CMD_GET);
-        // снять один
-        scanUseCase.put(run.cmdGetOne, BAGE, CMD_GET_ONE);
-//        scanUseCase.put(run.runGetOnePlace, BAGE, CMD_GET_ONE, PLACE);
-//        //
-        scanUseCase.put(run.cmdFinish, BAGE, CMD_GET, FINISH);
-        scanUseCase.put(run.cmdFinish, BAGE, CMD_GET_ONE, FINISH);
-//        //
-        scanUseCase.put(run.cmdBageFinish, BAGE, FINISH);
 
     }
 
@@ -138,7 +113,7 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
 
     @Override
     public void onDestroyView() {
-
+        beep = new MutableLiveData<Integer>();
     }
 
 

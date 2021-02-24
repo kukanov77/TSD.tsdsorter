@@ -7,8 +7,8 @@ android {
         applicationId "com.labirint.tsdsorter"
         minSdkVersion 25
         targetSdkVersion 29
-        versionCode 13
-        versionName "2.2"
+        versionCode 14
+        versionName "2.0"
         buildConfigField "String", "DB_NAME", '"tsdsorter_db"'
         buildConfigField "String", "SERVER_ADDR", '"10.0.100.20"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

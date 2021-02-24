@@ -56,7 +56,7 @@ public class WorkFragment extends BaseFragment /*implements Interactor.MainView,
 //            onScan(new Barcode(CMD.ARRANGE));
 //        });
 //        binding.btn3.setOnClickListener(v -> {
-//            onScan(new Barcode("950000001000"));
+//            onScan(new Barcode("870000001111"));
 //            //onScan(new Barcode(CMD.FINISH));
 //        });
 

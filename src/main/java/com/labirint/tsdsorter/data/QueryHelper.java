@@ -67,7 +67,7 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Sales=%d,@ID_Stretch=%d"
                 , "fnTSDGetInfoForPutOnAdress", id_sales, id_stetch);
-        queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query(str_query, JSONArray.class, true), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------
     // --- 29 - spTSDPutOnAdress - положить на адрес
@@ -92,7 +92,14 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
                 , "spTSDRemoveFromAdress", id_place, id_person);
         queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
     }
-
+    // --------------------------------------------------------------------------------------
+    // --- 32 - checkPlaceToRemove - проверка заполненности места
+    public void queryCheckPlaceToRemove (int id_place, Consumer<JSONArray> onResponse){
+        String str_query = String.format(getMulifuncStr()
+                        +",@ID_Place=%d"
+                , "checkPlaceToRemove", id_place);
+        queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+    }
 
 
 }
