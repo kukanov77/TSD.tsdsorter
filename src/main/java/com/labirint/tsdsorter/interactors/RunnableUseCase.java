@@ -86,12 +86,14 @@ public class RunnableUseCase {
                         JSONObject j = jsons.getJSONObject(0);
                         boolean is_error = j.getBoolean("isError");
                         String txt =  j.isNull("txt")?"fnTSDGetInfoForPutOnAdress\nвернул NULL":j.getString("txt");
+                        String txt_place =  j.isNull("txt_place")?"fnTSDGetInfoForPutOnAdress\nвернул NULL":j.getString("txt_place");
 
                         if (is_error) {
-                            m.valuesRepository.setIdPlace(-1);
+                            m.valuesRepository.clearPlace();
                             m.msg.alert(txt,"Сканируй стрейч");
                         } else {
                             m.valuesRepository.setIdPlace(j.getInt("id_Place"));
+                            m.valuesRepository.setPlace(txt_place);
                             m.msg.say(txt);
                             m.backResource.set(R.drawable.place);
                         }
@@ -118,34 +120,40 @@ public class RunnableUseCase {
     // ----------------------------------------------------------------------------------------
     // --- расстановка - стрейч - адрес
     public Runnable cmdArrangeStretchPlace = () -> {
-        m.queryHelper.querySpTSDPutOnAdress(m.valuesRepository.getIdPlace(), m.valuesRepository.getIdSales(),m.valuesRepository.getIdPerson(),m.valuesRepository.getStretch(),
-            js -> {
-                //todo проверка на срочность съема с адреса
-                m.queryHelper.queryCheckPlaceToRemove(m.valuesRepository.getIdPlace(),
-                  jsons -> {
-                    m.valuesRepository.setIdSales(-1);
-                    m.valuesRepository.setStretch(-1);
 
-                    JSONObject j = jsons.getJSONObject(0);
-                    int id_place = j.getInt("id_Place");
-                    if (id_place > 0){
-                        m.valuesRepository.setIdPlace(id_place);
-                        m.valuesRepository.setPlace(j.getString("place"));
-                        m.msg.say("OK", String.format("Сними ящик\n Сканируй адрес %s", j.getString("place")), Msg.BOX_BEEP);
-                        m.title.setValue("Снятие");
-                        m.backResource.set(R.drawable.place);
-                    } else {
-                        m.valuesRepository.clearPlace();
-                        m.msg.say("OK","Сканируй стрейч");
-                        m.backResource.set(R.drawable.box);
-                        m.scanUseCase.setScanKeys(BAGE, CMD_ARRANGE);
-                    }
-                  }
-                );
+        if (m.barcode.intBody() == m.valuesRepository.getIdPlace()) {
 
-            }
-        );
+            m.queryHelper.querySpTSDPutOnAdress(m.valuesRepository.getIdPlace(), m.valuesRepository.getIdSales(),m.valuesRepository.getIdPerson(),m.valuesRepository.getStretch(),
+                js -> {
 
+                    m.queryHelper.queryCheckPlaceToRemove(m.valuesRepository.getIdPlace(),
+                      jsons -> {
+                        m.valuesRepository.setIdSales(-1);
+                        m.valuesRepository.setStretch(-1);
+
+                        JSONObject j = jsons.getJSONObject(0);
+                        int id_place = j.getInt("id_Place");
+                        if (id_place > 0){
+                            m.msg.say(String.format("Уложен на адрес\n%s", m.valuesRepository.getPlace()), String.format("Сними ящик\n Сканируй адрес %s", j.getString("place")), Msg.BOX_BEEP);
+                            m.valuesRepository.setIdPlace(id_place);
+                            m.valuesRepository.setPlace(j.getString("place"));
+                            m.title.setValue("Снятие");
+                            m.backResource.set(R.drawable.place);
+                        } else {
+                            m.msg.say(String.format("Уложен на адрес\n%s", m.valuesRepository.getPlace()),"Сканируй стрейч");
+                            m.valuesRepository.clearPlace();
+                            m.backResource.set(R.drawable.box);
+                            m.scanUseCase.setScanKeys(BAGE, CMD_ARRANGE);
+                        }
+                      }
+                    );
+
+                }
+            );
+
+        } else {
+            m.msg.alert("Неверный адрес!", String.format("Сканируй адрес\n%s", m.valuesRepository.getPlace()) );
+        }
 
     };
     // ----------------------------------------------------------------------------------------
