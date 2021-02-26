@@ -9,9 +9,12 @@ import androidx.lifecycle.MutableLiveData;
 
 import ru.labirint.core.entities.Barcode;
 import ru.labirint.core.ui.base.BaseViewModel;
+import ru.labirint.core.util.messages.Msg;
 import ru.labirint.core.util.messages.tsdmsg.MsgHelper;
 import ru.labirint.core.util.messages.tsdmsg.MsgScanUseCase;
 import ru.labirint.core.util.messages.tsdmsg.MsgViewModel;
+import ru.labirint.core.util.messages.tsdmsg.StringHelper;
+
 import com.labirint.tsdsorter.R;
 import com.labirint.tsdsorter.data.QueryHelper;
 import com.labirint.tsdsorter.interactors.scankeys.ScanUseCase;
@@ -24,9 +27,9 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
     public QueryHelper queryHelper;
     public ValuesRepository valuesRepository;
     public ScanUseCase scanUseCase;
-    RunnableUseCase run;
     public MsgHelper msg;
 
+    RunnableUseCase run;
 
     public Barcode barcode;
 
@@ -43,14 +46,12 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
         this.queryHelper = queryHelper;
         this.valuesRepository = valuesRepository;
         valuesRepository.getPersonText().subscribe(txt -> personText.set(new SpannableString(txt)));
-
+        // - initScanUseCase();
         run = new RunnableUseCase(this);
         this.scanUseCase = new ScanUseCase(new Scankeys(), run);
-
+        // -
         msg = new MsgHelper(this);
         msg.getOnSay().subscribe(b -> onSay.setValue(b));
-
-
 
         scanUseCase.getAlert().subscribe(txt -> msg.alert(txt));
 

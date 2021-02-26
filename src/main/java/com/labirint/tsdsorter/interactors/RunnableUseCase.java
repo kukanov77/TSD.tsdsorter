@@ -134,11 +134,19 @@ public class RunnableUseCase {
                         JSONObject j = jsons.getJSONObject(0);
                         int id_place = j.getInt("id_Place");
                         if (id_place > 0){
-                            m.msg.say(String.format("Уложен на адрес\n%s", m.valuesRepository.getPlace()), String.format("Сними ящик\n Сканируй адрес %s", j.getString("place")), Msg.BOX_BEEP);
+
+                            StringHelper txt = StringHelper.newSpannable();
+                            txt.add(String.format("Уложен на адрес\n%s", m.valuesRepository.getPlace()));
+
+                            StringHelper post = StringHelper.newSpannable();
+                            post.red(String.format("Сними ящик\nСканируй адрес\n%s", j.getString("place")));
+                            post.setBackResource(R.drawable.green);
+
+                            m.msg.say(txt, post, Msg.BOX_BEEP);
                             m.valuesRepository.setIdPlace(id_place);
                             m.valuesRepository.setPlace(j.getString("place"));
                             m.title.setValue("Снятие");
-                            m.backResource.set(R.drawable.place);
+                            //m.backResource.set(R.drawable.place);
                         } else {
                             m.msg.say(String.format("Уложен на адрес\n%s", m.valuesRepository.getPlace()),"Сканируй стрейч");
                             m.valuesRepository.clearPlace();
@@ -272,16 +280,17 @@ public class RunnableUseCase {
         m.msg.say("Сканируй команду");
         m.title.setValue("Выбор команды");
         m.backResource.set(R.drawable.command);
+        m.scanUseCase.setScanKeys(BAGE);
+
     };
 
     public Runnable finishFinish = () -> {
-
         m.valuesRepository.setIdPerson(-1);
         m.valuesRepository.setPersonName("");
         m.msg.say("Сканируй бейдж");
         m.title.setValue("Авторизация");
         m.backResource.set(R.drawable.bage);
-
+        m.scanUseCase.clearScanKey();
     };
 
     // ----------------------------------------------------------------------------------------
