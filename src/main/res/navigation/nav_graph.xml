@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/splashFragment"
         android:name="ru.labirint.core.ui.splash.SplashFragment"
-        android:label="Динамический сортер"
+        android:label="Сортер ИМ"
         tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_mainFragment"

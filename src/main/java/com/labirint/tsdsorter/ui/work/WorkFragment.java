@@ -21,6 +21,8 @@ import com.labirint.tsdsorter.ui.base.BaseFragment;
 import com.labirint.tsdsorter.ui.root.RootActivity;
 
 import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.BAGE;
+import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_ARRANGE;
+import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.STRETCH;
 
 public class WorkFragment extends BaseFragment /*implements Interactor.MainView, ScannerListener*/ {
 
@@ -45,15 +47,24 @@ public class WorkFragment extends BaseFragment /*implements Interactor.MainView,
 
         // --- debug
         // дебажные кнопки
-//            binding.btn1.setOnClickListener(v -> {
-//                viewModel().scanUseCase.setScanKeys(BAGE);
-//                viewModel().valuesRepository.setIdPerson(1);
-//                viewModel().msg.say("Сканируй команду");
-//                viewModel().title.setValue("Выбор команды");
-//                viewModel().backResource.set(R.drawable.command);
+
+
+//
+//
+//        binding.btn1.setOnClickListener(v -> {
+////                viewModel().scanUseCase.setScanKeys(BAGE, CMD_ARRANGE, STRETCH);
+////                viewModel().valuesRepository.setIdPerson(111);
+////            Barcode bc1 = new Barcode("873616773103");
+////            app().getValuesRepository().setIdSales(bc1);
+////            app().getValuesRepository().setStretch(bc1);
+////            app().getValuesRepository().setIdPlace(796462);
+////            app().getValuesRepository().setPlace("15-05-3");
+//            //873616834705
+//            onScan(new Barcode("820000021343"));
+//
 //            });
 //        binding.btn2.setOnClickListener(v -> {
-//            onScan(new Barcode(CMD.ARRANGE));
+//            onScan(new Barcode(CMD.GET));
 //        });
 //        binding.btn3.setOnClickListener(v -> {
 //            onScan(new Barcode("870000001111"));

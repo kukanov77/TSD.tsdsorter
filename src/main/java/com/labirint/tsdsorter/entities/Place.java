@@ -8,10 +8,14 @@ import org.json.JSONObject;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 
-public class Place implements Parcelable {
+import ru.labirint.core.data.Column;
 
-    private int id_place;
+public class Place {
+    @Column(name = "id_Place")
+    private Integer id_place;
+    @Column(name ="place")
     private String place = "";
 
     public Place(JSONObject j) throws JSONException {
@@ -19,44 +23,11 @@ public class Place implements Parcelable {
         place = j.getString("place");
     }
 
-    public Place(ResultSet rs)
-    {
-        try {
-            id_place = rs.getInt("id_Place");
-            place = rs.getString("place");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public String getPlace() {
+        return place;
     }
 
-    protected Place(Parcel in) {
-        id_place = in.readInt();
-        place = in.readString();
-    }
-
-    public static final Creator<Place> CREATOR = new Creator<Place>() {
-        @Override
-        public Place createFromParcel(Parcel in) {
-            return new Place(in);
-        }
-
-        @Override
-        public Place[] newArray(int size) {
-            return new Place[size];
-        }
-    };
-
-    public int getIdPlace() { return id_place; }
-    public String getPlace() { return place; }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id_place);
-        dest.writeString(place);
+    public Integer getIdPlace() {
+        return Optional.ofNullable(id_place).orElse(0);
     }
 }

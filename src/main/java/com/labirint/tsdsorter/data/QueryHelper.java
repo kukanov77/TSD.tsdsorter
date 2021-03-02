@@ -10,6 +10,7 @@ import ru.labirint.core.data.Query;
 import ru.labirint.core.data.QueryRepository;
 import ru.labirint.core.entities.Barcode;
 import com.labirint.tsdsorter.entities.PersonInfo;
+import com.labirint.tsdsorter.entities.Place;
 import com.labirint.tsdsorter.entities.PlaceResponse;
 import com.labirint.tsdsorter.entities.TextResponse;
 import com.labirint.tsdsorter.entities.values.ValuesRepository;
@@ -82,7 +83,7 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
     public void querySpTSDGetPlaceToRemove (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
                 , "spTSDGetPlaceToRemove");
-        queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query(str_query, JSONArray.class, true), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------
     // --- 31 - spTSDRemoveFromAdress - запрос снять с адреса

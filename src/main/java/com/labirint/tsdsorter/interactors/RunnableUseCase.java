@@ -5,6 +5,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import ru.labirint.core.entities.Prefix;
+import ru.labirint.core.util.messages.Beep;
 import ru.labirint.core.util.messages.Msg;
 import ru.labirint.core.util.messages.tsdmsg.StringHelper;
 
@@ -142,7 +143,7 @@ public class RunnableUseCase {
                             post.red(String.format("Сними ящик\nСканируй адрес\n%s", j.getString("place")));
                             post.setBackResource(R.drawable.green);
 
-                            m.msg.say(txt, post, Msg.BOX_BEEP);
+                            m.msg.say(txt, post, Beep.BOX);
                             m.valuesRepository.setIdPlace(id_place);
                             m.valuesRepository.setPlace(j.getString("place"));
                             m.title.setValue("Снятие");

@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import ru.labirint.core.entities.Barcode;
 import ru.labirint.core.ui.base.BaseViewModel;
+import ru.labirint.core.util.messages.Beep;
 import ru.labirint.core.util.messages.Msg;
 import ru.labirint.core.util.messages.tsdmsg.MsgHelper;
 import ru.labirint.core.util.messages.tsdmsg.MsgScanUseCase;
@@ -37,7 +38,7 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
     public ObservableField<Spannable> personText = new ObservableField<Spannable>(new SpannableString(""));
     public ObservableField<Boolean> isAlert = new ObservableField<Boolean>(false);
     public ObservableField<Integer> backResource = new ObservableField<Integer>(R.drawable.bage);
-    MutableLiveData<Integer> beep = new MutableLiveData<Integer>();
+    MutableLiveData<Beep> beep = new MutableLiveData<Beep>();
     public ObservableField<Boolean> isConnected = new ObservableField<Boolean>(true);
     public MutableLiveData<String> title = new MutableLiveData<String>();
     private MutableLiveData<Boolean> onSay = new MutableLiveData<Boolean>();
@@ -70,21 +71,18 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
     public ObservableField<Spannable> getText() {
         return text;
     }
-
     @Override
     public ObservableField<Boolean> getIsAlert() {
         return isAlert;
     }
-
     @Override
     public ObservableField<Integer> getBackResource() {
         return backResource;
     }
-
-    public MutableLiveData<Integer> getBeep() {
+    @Override
+    public MutableLiveData<Beep> getBeep() {
         return beep;
     }
-
     @Override
     public MsgScanUseCase getScanUseCase() {
         return scanUseCase;
@@ -114,7 +112,7 @@ public class WorkViewModel extends BaseViewModel implements MsgViewModel {
 
     @Override
     public void onDestroyView() {
-        beep = new MutableLiveData<Integer>();
+        beep = new MutableLiveData<Beep>();
     }
 
 
