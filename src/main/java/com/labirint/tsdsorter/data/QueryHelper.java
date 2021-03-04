@@ -56,26 +56,26 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
 
     // --------------------------------------------------------------------------------------
     // --- 27 - fnGetStuffInfoForPerson - авторизация, cканируем бейдж
-    public void queryPersonInfo(int id_person, Consumer<JSONArray> onResponse){
+    public void queryPersonInfo(Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
                 +",@IdPerson=%d"
-                , "fnGetStuffInfoForPerson", id_person);
+                , "fnGetStuffInfoForPerson", valuesRepository.getIdPerson());
         queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------
     // --- 28 - fnTSDGetInfoForPutOnAdress - поиск места расстановки
-    public void queryFnTSDGetInfoForPutOnAdress (int id_sales, int id_stetch, Consumer<JSONArray> onResponse){
+    public void queryFnTSDGetInfoForPutOnAdress (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Sales=%d,@ID_Stretch=%d"
-                , "fnTSDGetInfoForPutOnAdress", id_sales, id_stetch);
+                , "fnTSDGetInfoForPutOnAdress", valuesRepository.getIdSales(), valuesRepository.getStretch());
         queryRepository.execute(new Query(str_query, JSONArray.class, true), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------
     // --- 29 - spTSDPutOnAdress - положить на адрес
-    public void querySpTSDPutOnAdress (int id_place, int id_sales, int id_person, int id_stretch, Consumer<JSONArray> onResponse){
+    public void querySpTSDPutOnAdress(Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Place=%d, @ID_Sales=%d, @IdPerson=%d, @ID_Stretch=%d"
-                , "spTSDPutOnAdress",id_place,id_sales,id_person,id_stretch);
+                , "spTSDPutOnAdress",valuesRepository.getIdPlace(), valuesRepository.getIdSales(),valuesRepository.getIdPerson(),valuesRepository.getStretch());
         queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------

@@ -38,7 +38,7 @@ public class RunnableUseCase {
 
         m.valuesRepository.setIdPerson(m.barcode.intBody());
 
-        m.queryHelper.queryPersonInfo(m.barcode.intBody(),
+        m.queryHelper.queryPersonInfo(
             jsons -> {
                 if (jsons.length() > 0) {
                     JSONObject j = jsons.getJSONObject(0);
@@ -79,7 +79,7 @@ public class RunnableUseCase {
             m.msg.alert("ШК не распознался!", "Сканируй стрейч");
         } else {
 
-            m.queryHelper.queryFnTSDGetInfoForPutOnAdress(m.valuesRepository.getIdSales(), m.valuesRepository.getStretch(),
+            m.queryHelper.queryFnTSDGetInfoForPutOnAdress(
                 jsons -> {
 
                     if (jsons.length() > 0) {
@@ -124,7 +124,7 @@ public class RunnableUseCase {
 
         if (m.barcode.intBody() == m.valuesRepository.getIdPlace()) {
 
-            m.queryHelper.querySpTSDPutOnAdress(m.valuesRepository.getIdPlace(), m.valuesRepository.getIdSales(),m.valuesRepository.getIdPerson(),m.valuesRepository.getStretch(),
+            m.queryHelper.querySpTSDPutOnAdress(
                 js -> {
 
                     m.queryHelper.queryCheckPlaceToRemove(m.valuesRepository.getIdPlace(),
@@ -169,7 +169,7 @@ public class RunnableUseCase {
     // --- расстановка - стрейч - адрес - снять с места
     public Runnable cmdArrangeStretchPlacePlace = () -> {
         int id_place = m.valuesRepository.getIdPlace();
-        if (m.barcode.intBody() == id_place) {
+        if ( m.barcode.intBody() == id_place) {
             m.queryHelper.querySpTSDRemoveFromAdress(id_place, m.valuesRepository.getIdPerson(),
                     jsons->{
                         if (jsons.length() > 0){
