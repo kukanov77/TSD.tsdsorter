@@ -27,11 +27,11 @@ public class ScanUseCase extends ru.labirint.core.scankeys.ScanUseCase {
         // -
         put(run.getPerson, BAGE);
         // - расстановка
-        put(run.cmdArrange, BAGE, CMD_ARRANGE);
-        put(run.cmdArrangeStretch, BAGE, CMD_ARRANGE, STRETCH);
-        put(run.cmdArrangeCancel, BAGE, CMD_ARRANGE, STRETCH, CANCEL);
-        put(run.cmdArrangeStretchPlace, BAGE, CMD_ARRANGE, STRETCH, PLACE);
-        put(run.cmdArrangeStretchPlacePlace, BAGE, CMD_ARRANGE, STRETCH, PLACE, PLACE);
+        put(run.cmdArrange,                 BAGE, CMD_ARRANGE);
+        put(run.cmdArrangeStretch,          BAGE, CMD_ARRANGE, STRETCH);
+        put(run.cmdArrangeCancel,           BAGE, CMD_ARRANGE, STRETCH, CANCEL);
+        put(run.cmdArrangeStretchPlace,     BAGE, CMD_ARRANGE, STRETCH, PLACE);
+        put(run.cmdArrangeStretchPlacePlace,BAGE, CMD_ARRANGE, STRETCH, PLACE, PLACE);
         // - снять
         put(run.cmdGet, BAGE, CMD_GET);
         put(run.cmdGetPlace, BAGE, CMD_GET, PLACE);
