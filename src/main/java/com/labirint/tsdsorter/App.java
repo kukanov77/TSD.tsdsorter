@@ -1,10 +1,13 @@
 package com.labirint.tsdsorter;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.labirint.tsdsorter.data.AppDatabase;
 import com.labirint.tsdsorter.data.QueryHelper;
 import com.labirint.tsdsorter.entities.values.ValuesRepository;
+import com.labirint.tsdsorter.ui.work.WorkViewModelFactory;
 
-public class App extends ru.labirint.core.App  {
+public class App extends ru.labirint.core_tsd.App  {
 
     //QueryHelper queryHelper;
     ValuesRepository valuesRepository;
@@ -45,6 +48,16 @@ public class App extends ru.labirint.core.App  {
 
     public ValuesRepository getValuesRepository() {
         return valuesRepository;
+    }
+
+    @Override
+    public String getApkName() {
+        return "TSDSorter.apk";
+    }
+
+    @Override
+    public ViewModelProvider.Factory getWorkModelFactory() {
+        return  new WorkViewModelFactory(getQueryHelper(), getValuesRepository());
     }
 
     // ------------------------------------------------------------------------------------------

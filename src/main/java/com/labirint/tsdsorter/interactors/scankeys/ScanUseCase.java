@@ -15,12 +15,12 @@ import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.PLACE;
 import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.STRETCH;
 
 
-public class ScanUseCase extends ru.labirint.core.scankeys.ScanUseCase {
+public class ScanUseCase extends ru.labirint.core_tsd.interactors.scankeys.ScanUseCase {
 
     RunnableUseCase run;
 
     public ScanUseCase(Scankeys scankeys, RunnableUseCase run) {
-        super(scankeys);
+        super(scankeys, run);
 
         this.run = run;
 

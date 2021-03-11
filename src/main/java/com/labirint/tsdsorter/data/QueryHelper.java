@@ -17,7 +17,7 @@ import com.labirint.tsdsorter.entities.values.ValuesRepository;
 
 import org.json.JSONArray;
 
-public class QueryHelper extends ru.labirint.core.data.QueryHelper {
+public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
 
     ValuesRepository valuesRepository;
 
@@ -28,7 +28,7 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
 
 
     public QueryHelper(QueryRepository queryRepository, ValuesRepository valuesRepository) {
-        super(queryRepository);
+        super(queryRepository, valuesRepository);
         this.valuesRepository = valuesRepository;
     }
 
@@ -42,10 +42,10 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
 //            error.postValue(e);
 //        }
 //    };
-    @Override
-    public String getSplashQuery() {
-        return "SELECT 1 id, 0 error, '\"ver\":\"'+LastVersion+'\"' [message] FROM [SQLMAIN\\SQLSVR].Books.dbo.tblToDoKLProject WHERE ID_Project = 411";
-    }
+//    @Override
+//    public String getSplashQuery() {
+//        return "SELECT 1 id, 0 error, '\"ver\":\"'+LastVersion+'\"' [message] FROM [SQLMAIN\\SQLSVR].Books.dbo.tblToDoKLProject WHERE ID_Project = 411";
+//    }
 
     // --------------------------------------------------------------------------------------
     private String getMulifuncStr() {
@@ -87,18 +87,18 @@ public class QueryHelper extends ru.labirint.core.data.QueryHelper {
     }
     // --------------------------------------------------------------------------------------
     // --- 31 - spTSDRemoveFromAdress - запрос снять с адреса
-    public void querySpTSDRemoveFromAdress (int id_place, int id_person, Consumer<JSONArray> onResponse){
+    public void querySpTSDRemoveFromAdress (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Place=%d,@IdPerson=%d"
-                , "spTSDRemoveFromAdress", id_place, id_person);
+                , "spTSDRemoveFromAdress", valuesRepository.getIdPlace(), valuesRepository.getIdPerson());
         queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------
     // --- 32 - checkPlaceToRemove - проверка заполненности места
-    public void queryCheckPlaceToRemove (int id_place, Consumer<JSONArray> onResponse){
+    public void queryCheckPlaceToRemove (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Place=%d"
-                , "checkPlaceToRemove", id_place);
+                , "checkPlaceToRemove", valuesRepository.getIdPlace());
         queryRepository.execute(new Query(str_query, JSONArray.class), onResponse, onError, loadingIndicator);
     }
 

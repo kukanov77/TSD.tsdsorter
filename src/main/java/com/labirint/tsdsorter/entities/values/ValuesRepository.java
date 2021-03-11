@@ -9,7 +9,7 @@ import com.labirint.tsdsorter.entities.PlaceResponse;
 import com.labirint.tsdsorter.entities.values.Values;
 import com.labirint.tsdsorter.entities.values.ValuesDao;
 
-public class ValuesRepository {
+public class ValuesRepository extends ru.labirint.core_tsd.entities.values.ValuesRepository {
 
     BehaviorSubject<String> personText = BehaviorSubject.createDefault("");
     Values values;
@@ -24,7 +24,7 @@ public class ValuesRepository {
 
     public Observable<String> getPersonText(){return personText;}
 
-    private void setPersonText(){
+    public void setPersonText(){
         personText.onNext(values.getName());
     }
 
@@ -65,6 +65,11 @@ public class ValuesRepository {
     public void clear() {
         values = new Values();
         valuesDao.insert(values);
+    }
+
+    @Override
+    public String getProjectName() {
+        return "TSDSorter";
     }
 
     public void setPlace(Place place) {
