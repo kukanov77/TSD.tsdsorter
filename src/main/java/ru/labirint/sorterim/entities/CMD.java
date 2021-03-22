@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.entities;
+package ru.labirint.sorterim.entities;
 
 public class CMD {
     public static final String ARRANGE = "33000010"; //расстановка

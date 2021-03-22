@@ -1,7 +1,6 @@
-package com.labirint.tsdsorter.interactors.scankeys;
+package ru.labirint.sorterim.interactors.scankeys;
 
-import com.labirint.tsdsorter.entities.CMD;
-
+import ru.labirint.sorterim.entities.CMD;
 import ru.labirint.core.entities.Prefix;
 import ru.labirint.core.scankeys.Scankey;
 

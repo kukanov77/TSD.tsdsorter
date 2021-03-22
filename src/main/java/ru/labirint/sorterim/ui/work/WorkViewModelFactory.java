@@ -1,11 +1,11 @@
-package com.labirint.tsdsorter.ui.work;
+package ru.labirint.sorterim.ui.work;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.labirint.tsdsorter.data.QueryHelper;
-import com.labirint.tsdsorter.entities.values.ValuesRepository;
+import ru.labirint.sorterim.data.QueryHelper;
+import ru.labirint.sorterim.entities.values.ValuesRepository;
 
 
 public class WorkViewModelFactory implements ViewModelProvider.Factory {

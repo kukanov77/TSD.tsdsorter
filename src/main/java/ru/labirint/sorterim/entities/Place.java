@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.entities;
+package ru.labirint.sorterim.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.interactors;
+package ru.labirint.sorterim.interactors;
 
 import android.os.Handler;
 
@@ -12,18 +12,18 @@ import ru.labirint.core.util.messages.Msg;
 import ru.labirint.core.util.messages.tsdmsg.MsgHelper;
 import ru.labirint.core.util.messages.tsdmsg.StringHelper;
 
-import com.labirint.tsdsorter.R;
-import com.labirint.tsdsorter.data.QueryHelper;
-import com.labirint.tsdsorter.entities.Place;
-import com.labirint.tsdsorter.entities.values.ValuesRepository;
-import com.labirint.tsdsorter.ui.work.WorkViewModel;
+import ru.labirint.sorterim.R;
+import ru.labirint.sorterim.data.QueryHelper;
+import ru.labirint.sorterim.entities.Place;
+import ru.labirint.sorterim.entities.values.ValuesRepository;
+import ru.labirint.sorterim.ui.work.WorkViewModel;
 
 import org.json.JSONObject;
 
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.BAGE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_ARRANGE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_GET;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_GET_ONE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.BAGE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_ARRANGE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET_ONE;
 
 public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUseCase {
 

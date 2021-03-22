@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
     defaultConfig {
-        applicationId "com.labirint.tsdsorter"
-        minSdkVersion 25
-        targetSdkVersion 29
-        versionCode 21
-        versionName "2.0.7"
+        applicationId "ru.labirint.sorterim"
+        minSdkVersion 24
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0.0"
         buildConfigField "int", "ID_Project", '411'
-        buildConfigField "String", "DB_NAME", '"tsdsorter_db"'
+        buildConfigField "String", "DB_NAME", '"sorterim_db"'
         buildConfigField "String", "SERVER_ADDR", '"10.0.100.20"'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

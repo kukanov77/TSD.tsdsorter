@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.ui.work;
+package ru.labirint.sorterim.ui.work;
 
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -16,12 +16,12 @@ import ru.labirint.core.util.messages.tsdmsg.MsgScanUseCase;
 import ru.labirint.core.util.messages.tsdmsg.MsgViewModel;
 import ru.labirint.core.util.messages.tsdmsg.StringHelper;
 
-import com.labirint.tsdsorter.R;
-import com.labirint.tsdsorter.data.QueryHelper;
-import com.labirint.tsdsorter.interactors.scankeys.ScanUseCase;
-import com.labirint.tsdsorter.interactors.scankeys.Scankeys;
-import com.labirint.tsdsorter.interactors.RunnableUseCase;
-import com.labirint.tsdsorter.entities.values.ValuesRepository;
+import ru.labirint.sorterim.R;
+import ru.labirint.sorterim.data.QueryHelper;
+import ru.labirint.sorterim.interactors.scankeys.ScanUseCase;
+import ru.labirint.sorterim.interactors.scankeys.Scankeys;
+import ru.labirint.sorterim.interactors.RunnableUseCase;
+import ru.labirint.sorterim.entities.values.ValuesRepository;
 
 public class WorkViewModel extends ru.labirint.core_tsd.ui.work.WorkViewModel  {
 

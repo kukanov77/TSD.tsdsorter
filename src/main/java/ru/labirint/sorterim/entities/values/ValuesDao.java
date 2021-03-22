@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.entities.values;
+package ru.labirint.sorterim.entities.values;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -9,7 +9,7 @@ import androidx.room.Transaction;
 @Dao
 public interface ValuesDao {
 
-    @Query("SELECT * FROM tbl_values")
+    @Query("SELECT * FROM sorterim_values")
     Values getValues();
 
 //    @Query("UPDATE options SET IdTable = -1, IdManager = -1, Manager = '', IdRack = -1, NumRack = -1, isStatic = 0")
@@ -18,7 +18,7 @@ public interface ValuesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Values values);
 
-    @Query("DELETE FROM tbl_values")
+    @Query("DELETE FROM sorterim_values")
     void delete();
 
     @Transaction

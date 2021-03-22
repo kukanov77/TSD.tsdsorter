@@ -1,18 +1,18 @@
-package com.labirint.tsdsorter.interactors.scankeys;
+package ru.labirint.sorterim.interactors.scankeys;
 
-import com.labirint.tsdsorter.interactors.RunnableUseCase;
+import ru.labirint.sorterim.interactors.RunnableUseCase;
 
 import ru.labirint.core.entities.Barcode;
 import ru.labirint.core.scankeys.Scankeys;
 
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.BAGE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CANCEL;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_ARRANGE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_GET;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.CMD_GET_ONE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.FINISH;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.PLACE;
-import static com.labirint.tsdsorter.interactors.scankeys.Scankeys.STRETCH;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.BAGE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CANCEL;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_ARRANGE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET_ONE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.FINISH;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.PLACE;
+import static ru.labirint.sorterim.interactors.scankeys.Scankeys.STRETCH;
 
 
 public class ScanUseCase extends ru.labirint.core_tsd.interactors.scankeys.ScanUseCase {

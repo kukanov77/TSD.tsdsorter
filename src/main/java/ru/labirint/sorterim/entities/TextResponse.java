@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.entities;
+package ru.labirint.sorterim.entities;
 
 import ru.labirint.core.data.Column;
 

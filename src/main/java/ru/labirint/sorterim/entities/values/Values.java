@@ -1,11 +1,9 @@
-package com.labirint.tsdsorter.entities.values;
+package ru.labirint.sorterim.entities.values;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import ru.labirint.core.entities.Barcode;
-
-@Entity(tableName = "tbl_values")
+@Entity(tableName = "sorterim_values")
 public class Values {
     @PrimaryKey
     private int id = 0;

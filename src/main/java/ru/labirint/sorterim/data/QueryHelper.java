@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.data;
+package ru.labirint.sorterim.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -8,12 +8,7 @@ import java.util.List;
 import io.reactivex.functions.Consumer;
 import ru.labirint.core.data.Query;
 import ru.labirint.core.data.QueryRepository;
-import ru.labirint.core.entities.Barcode;
-import com.labirint.tsdsorter.entities.PersonInfo;
-import com.labirint.tsdsorter.entities.Place;
-import com.labirint.tsdsorter.entities.PlaceResponse;
-import com.labirint.tsdsorter.entities.TextResponse;
-import com.labirint.tsdsorter.entities.values.ValuesRepository;
+import ru.labirint.sorterim.entities.values.ValuesRepository;
 
 import org.json.JSONArray;
 

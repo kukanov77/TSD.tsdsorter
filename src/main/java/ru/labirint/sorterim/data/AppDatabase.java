@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.data;
+package ru.labirint.sorterim.data;
 
 
 import android.content.Context;
@@ -19,12 +19,11 @@ import java.util.concurrent.Executors;
 
 import ru.labirint.core.data.iAppDatabase;
 import ru.labirint.core.entities.SplashResponse;
-import ru.labirint.core.util.NotImplementedException;
-import com.labirint.tsdsorter.App;
-import com.labirint.tsdsorter.entities.PlaceResponse;
-import com.labirint.tsdsorter.entities.TextResponse;
-import com.labirint.tsdsorter.entities.values.Values;
-import com.labirint.tsdsorter.entities.values.ValuesDao;
+import ru.labirint.sorterim.App;
+import ru.labirint.sorterim.entities.PlaceResponse;
+import ru.labirint.sorterim.entities.TextResponse;
+import ru.labirint.sorterim.entities.values.Values;
+import ru.labirint.sorterim.entities.values.ValuesDao;
 
 @Database(
         entities = {
@@ -96,7 +95,9 @@ public abstract class AppDatabase extends RoomDatabase implements iAppDatabase {
     public <T> void save(Object obj, Class<T> clazz){
         if (clazz == SplashResponse.class){
             SplashResponse splashResponse = getFrom(obj);
-            getSplashDao().insert(splashResponse);
+            if (splashResponse != null) {
+                getSplashDao().insert(splashResponse);
+            }
             return;
         }
 
