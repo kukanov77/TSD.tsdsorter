@@ -52,15 +52,15 @@ public class ScanUseCase extends ru.labirint.core_tsd.interactors.scankeys.ScanU
         put(run.finishFinish, BAGE, FINISH);
 
 
-        //todo debug
-        try {
-            run.setTestPerson();
-            run.cmdGet.run();
-            Thread.sleep(2000);
-            run.cmdDownTime.run();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        //debug
+//        try {
+//            run.setTestPerson();
+//            run.cmdGet.run();
+//            Thread.sleep(2000);
+//            run.cmdDownTime.run();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
 
     }
