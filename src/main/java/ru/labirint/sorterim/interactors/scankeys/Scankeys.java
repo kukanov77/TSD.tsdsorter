@@ -1,6 +1,6 @@
-package com.labirint.tsdsorter.interactors.scankeys;
+package ru.labirint.sorterim.interactors.scankeys;
 
-import com.labirint.tsdsorter.entities.CMD;
+import ru.labirint.sorterim.entities.CMD;
 
 import ru.labirint.core.entities.Prefix;
 import ru.labirint.core.scankeys.Scankey;
@@ -8,13 +8,14 @@ import ru.labirint.core.scankeys.Scankey;
 
 public class Scankeys extends ru.labirint.core.scankeys.Scankeys {
 
-    //QWRYUIDHJKLZXVBNM
+    //QWRYUIHJKLZXVBNM
 
     public static final Scankey CMD_ARRANGE = new Scankey (CMD.ARRANGE, "A", "Расстановка");
     public static final Scankey CMD_GET = new Scankey (CMD.GET, "T", "Снятие");
     public static final Scankey CMD_GET_ONE = new Scankey (CMD.GET_ONE, "O", "Снять");
     public static final Scankey CANCEL = new Scankey (CMD.CANCEL, "C", "Отмена");
     public static final Scankey FINISH = new Scankey (CMD.FINISH, "F", "Закончить");
+    public static final Scankey CMD_DOWN_TIME = new Scankey (CMD.DOWN_TIME, "D", "Простой");
 
     public static final Scankey BAGE = new Scankey (Prefix.BADGE.toString(), "G", "Бейдж");
     public static final Scankey PLACE = new Scankey (Prefix.PLACE.toString(), "P", "Адрес");
@@ -34,5 +35,6 @@ public class Scankeys extends ru.labirint.core.scankeys.Scankeys {
         keys.add(BAGE);
         keys.add(PLACE);
         keys.add(STRETCH);
+        keys.add(CMD_DOWN_TIME);
     }
 }

@@ -1,11 +1,11 @@
-package com.labirint.tsdsorter;
+package ru.labirint.sorterim;
 
 import androidx.lifecycle.ViewModelProvider;
 
-import com.labirint.tsdsorter.data.AppDatabase;
-import com.labirint.tsdsorter.data.QueryHelper;
-import com.labirint.tsdsorter.entities.values.ValuesRepository;
-import com.labirint.tsdsorter.ui.work.WorkViewModelFactory;
+import ru.labirint.sorterim.data.AppDatabase;
+import ru.labirint.sorterim.data.QueryHelper;
+import ru.labirint.sorterim.entities.values.ValuesRepository;
+import ru.labirint.sorterim.ui.work.WorkViewModelFactory;
 
 public class App extends ru.labirint.core_tsd.App  {
 
@@ -52,7 +52,7 @@ public class App extends ru.labirint.core_tsd.App  {
 
     @Override
     public String getApkName() {
-        return "TSDSorter.apk";
+        return "SorterIM.apk";
     }
 
     @Override

@@ -1,13 +1,13 @@
-package com.labirint.tsdsorter.entities.values;
+package ru.labirint.sorterim.entities.values;
 
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import ru.labirint.core.entities.Barcode;
-import com.labirint.tsdsorter.entities.PersonInfo;
-import com.labirint.tsdsorter.entities.Place;
-import com.labirint.tsdsorter.entities.PlaceResponse;
-import com.labirint.tsdsorter.entities.values.Values;
-import com.labirint.tsdsorter.entities.values.ValuesDao;
+import ru.labirint.sorterim.entities.PersonInfo;
+import ru.labirint.sorterim.entities.Place;
+import ru.labirint.sorterim.entities.PlaceResponse;
+import ru.labirint.sorterim.entities.values.Values;
+import ru.labirint.sorterim.entities.values.ValuesDao;
 
 public class ValuesRepository extends ru.labirint.core_tsd.entities.values.ValuesRepository {
 
@@ -69,7 +69,7 @@ public class ValuesRepository extends ru.labirint.core_tsd.entities.values.Value
 
     @Override
     public String getProjectName() {
-        return "TSDSorter";
+        return "SorterIM";
     }
 
     public void setPlace(Place place) {

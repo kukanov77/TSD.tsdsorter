@@ -1,4 +1,4 @@
-package com.labirint.tsdsorter.data;
+package ru.labirint.sorterim.data;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -9,11 +9,11 @@ import io.reactivex.functions.Consumer;
 import ru.labirint.core.data.Query;
 import ru.labirint.core.data.QueryRepository;
 import ru.labirint.core.entities.Barcode;
-import com.labirint.tsdsorter.entities.PersonInfo;
-import com.labirint.tsdsorter.entities.Place;
-import com.labirint.tsdsorter.entities.PlaceResponse;
-import com.labirint.tsdsorter.entities.TextResponse;
-import com.labirint.tsdsorter.entities.values.ValuesRepository;
+import ru.labirint.sorterim.entities.PersonInfo;
+import ru.labirint.sorterim.entities.Place;
+import ru.labirint.sorterim.entities.PlaceResponse;
+import ru.labirint.sorterim.entities.TextResponse;
+import ru.labirint.sorterim.entities.values.ValuesRepository;
 
 import org.json.JSONArray;
 
@@ -101,6 +101,13 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
                 , "checkPlaceToRemove", valuesRepository.getIdPlace());
         queryRepository.execute(new Query("checkPlaceToRemove", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
     }
-
+    // --------------------------------------------------------------------------------------
+    // -- 33 - spTSDSetDownTime - встать на простой
+    public void querySpTSDSetDownTime (Consumer<JSONArray> onResponse){
+        String str_query = String.format(getMulifuncStr()
+                        +",@IdPerson=%d"
+                , "spTSDSetDownTime", valuesRepository.getIdPerson());
+        queryRepository.execute(new Query("spTSDSetDownTime", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+    }
 
 }
