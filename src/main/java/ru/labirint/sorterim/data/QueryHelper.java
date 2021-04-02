@@ -82,7 +82,8 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
     // --- 30 - spTSDGetPlaceToRemove - запрос места для снятия
     public void querySpTSDGetPlaceToRemove (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
-                , "spTSDGetPlaceToRemove");
+                +",@IdPerson=%d"
+                , "spTSDGetPlaceToRemove", valuesRepository.getIdPerson());
         queryRepository.execute(new Query("spTSDGetPlaceToRemove", str_query, JSONArray.class, true), onResponse, onError, loadingIndicator);
     }
     // --------------------------------------------------------------------------------------

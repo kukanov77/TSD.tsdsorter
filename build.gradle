@@ -7,8 +7,8 @@ android {
         applicationId "ru.labirint.sorterim"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 2
-        versionName "1.0.1"
+        versionCode 3
+        versionName "1.0.2"
         buildConfigField "int", "ID_Project", '411'
         buildConfigField "String", "DB_NAME", '"sorterim_db"'
         buildConfigField "String", "SERVER_ADDR", '"10.0.100.20"'
