@@ -1,13 +1,9 @@
 package ru.labirint.sorterim.entities;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Optional;
 
 import ru.labirint.core.data.Column;
