@@ -60,7 +60,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                 +",@IdPerson=%d"
                 , "fnGetStuffInfoForPerson", valuesRepository.getIdPerson());
-        queryRepository.execute(new Query("fnGetStuffInfoForPerson", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("fnGetStuffInfoForPerson", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 28 - fnTSDGetInfoForPutOnAdress - поиск места расстановки
@@ -68,7 +68,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Sales=%d,@ID_Stretch=%d"
                 , "fnTSDGetInfoForPutOnAdress", valuesRepository.getIdSales(), valuesRepository.getStretch());
-        queryRepository.execute(new Query("fnTSDGetInfoForPutOnAdress", str_query, JSONArray.class, true), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("fnTSDGetInfoForPutOnAdress", str_query, JSONArray.class, true), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 29 - spTSDPutOnAdress - положить на адрес
@@ -76,7 +76,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Place=%d, @ID_Sales=%d, @IdPerson=%d, @ID_Stretch=%d"
                 , "spTSDPutOnAdress",valuesRepository.getIdPlace(), valuesRepository.getIdSales(),valuesRepository.getIdPerson(),valuesRepository.getStretch());
-        queryRepository.execute(new Query("spTSDPutOnAdress", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("spTSDPutOnAdress", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 30 - spTSDGetPlaceToRemove - запрос места для снятия
@@ -84,7 +84,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                 +",@IdPerson=%d"
                 , "spTSDGetPlaceToRemove", valuesRepository.getIdPerson());
-        queryRepository.execute(new Query("spTSDGetPlaceToRemove", str_query, JSONArray.class, true), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("spTSDGetPlaceToRemove", str_query, JSONArray.class, true), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 31 - spTSDRemoveFromAdress - запрос снять с адреса
@@ -92,7 +92,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Place=%d,@IdPerson=%d"
                 , "spTSDRemoveFromAdress", valuesRepository.getIdPlace(), valuesRepository.getIdPerson());
-        queryRepository.execute(new Query("spTSDRemoveFromAdress", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("spTSDRemoveFromAdress", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 32 - checkPlaceToRemove - проверка заполненности места
@@ -100,7 +100,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                         +",@ID_Place=%d"
                 , "checkPlaceToRemove", valuesRepository.getIdPlace());
-        queryRepository.execute(new Query("checkPlaceToRemove", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("checkPlaceToRemove", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // -- 33 - spTSDSetDownTime - встать на простой
@@ -108,7 +108,7 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
         String str_query = String.format(getMulifuncStr()
                         +",@IdPerson=%d"
                 , "spTSDSetDownTime", valuesRepository.getIdPerson());
-        queryRepository.execute(new Query("spTSDSetDownTime", str_query, JSONArray.class), onResponse, onError, loadingIndicator);
+        queryRepository.execute(new Query("spTSDSetDownTime", str_query, JSONArray.class), onResponse);
     }
 
 }
