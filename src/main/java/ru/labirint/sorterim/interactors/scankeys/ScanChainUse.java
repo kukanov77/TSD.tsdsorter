@@ -1,10 +1,8 @@
 package ru.labirint.sorterim.interactors.scankeys;
 
-import ru.labirint.sorterim.interactors.RunnableUseCase;
 
-import ru.labirint.core.entities.Barcode;
 import ru.labirint.core.scankeys.Scankeys;
-
+import ru.labirint.sorterim.interactors.ScanActions;
 import static ru.labirint.sorterim.interactors.scankeys.Scankeys.BAGE;
 import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CANCEL;
 import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_ARRANGE;
@@ -16,11 +14,11 @@ import static ru.labirint.sorterim.interactors.scankeys.Scankeys.PLACE;
 import static ru.labirint.sorterim.interactors.scankeys.Scankeys.STRETCH;
 
 
-public class ScanUseCase extends ru.labirint.core_tsd.interactors.scankeys.ScanUseCase {
+public class ScanChainUse extends ru.labirint.core_tsd.interactors.scankeys.ScanChainUse {
 
-    RunnableUseCase run;
+    ScanActions run;
 
-    public ScanUseCase(Scankeys scankeys, RunnableUseCase run) {
+    public ScanChainUse(Scankeys scankeys, ScanActions run) {
         super(scankeys, run);
 
         this.run = run;

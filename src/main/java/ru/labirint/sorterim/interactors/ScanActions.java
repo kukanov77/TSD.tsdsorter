@@ -20,7 +20,7 @@ import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_ARRANGE;
 import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET;
 import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET_ONE;
 
-public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUseCase {
+public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
 
 
 
@@ -31,7 +31,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
 
     // ----------------------------------------------------------------------------------------
 
-    public RunnableUseCase(WorkViewModel model) {
+    public ScanActions(WorkViewModel model) {
         super(model);
         this.model = model;
         this.queryHelper = (QueryHelper) model.queryHelper;
@@ -125,7 +125,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
         valuesRepository.clearPlace();
         msg.say("Сканируй стрейч", R.drawable.box);
         model.title.setValue("Расстановка");
-        model.scanUseCase.setScanKeys(BAGE, CMD_ARRANGE);
+        model.scanChain.setScanKeys(BAGE, CMD_ARRANGE);
     };
     // ----------------------------------------------------------------------------------------
     // --- расстановка - стрейч - адрес
@@ -157,7 +157,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
                             } else {
                                 msg.say(String.format("Уложен на адрес\n%s", valuesRepository.getPlace()),"Сканируй стрейч", R.drawable.box);
                                 valuesRepository.clearPlace();
-                                model.scanUseCase.setScanKeys(BAGE, CMD_ARRANGE);
+                                model.scanChain.setScanKeys(BAGE, CMD_ARRANGE);
                             }
                           }
                     );
@@ -182,7 +182,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
                             if (is_error == 0) {
                                 valuesRepository.clearPlace();
                                 msg.say("OK","Сканируй стрейч", R.drawable.box);
-                                model.scanUseCase.setScanKeys(BAGE, CMD_ARRANGE);
+                                model.scanChain.setScanKeys(BAGE, CMD_ARRANGE);
                             } else {
                                 msg.alert("Ошибка снятия\nПопробуйте еще раз!", String.format("Сканируй адрес\n%s", valuesRepository.getPlace()));
                             }
@@ -226,7 +226,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
                         int is_error = j.getInt("1");
                         if (is_error == 0) {
                             valuesRepository.clearPlace();
-                            model.scanUseCase.setScanKeys(BAGE, CMD_GET);
+                            model.scanChain.setScanKeys(BAGE, CMD_GET);
                             msg.say("OK");
                             new Handler().postDelayed(() -> cmdGet.run(), 100);
                         } else {
@@ -245,7 +245,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
     // --- снятие - отмена
     public Runnable cmdGetCancel = () -> {
         valuesRepository.clearPlace();
-        model.scanUseCase.setScanKeys(BAGE, CMD_GET);
+        model.scanChain.setScanKeys(BAGE, CMD_GET);
         cmdGet.run();
     };
     // ----------------------------------------------------------------------------------------
@@ -264,7 +264,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
                     JSONObject j = jsons.getJSONObject(0);
                     int is_error = j.getInt("1");
                     if (is_error == 0) {
-                        model.scanUseCase.setScanKeys(BAGE, CMD_GET_ONE);
+                        model.scanChain.setScanKeys(BAGE, CMD_GET_ONE);
                         msg.say("OK!\nЯщик снят", "Сканируй адрес");
                     } else {
                         msg.alert("Ошибка снятия\nПопробуйте еще раз!", "Сканируй адрес");
@@ -280,7 +280,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
     public Runnable finish = () -> {
         msg.say("Сканируй команду", R.drawable.command);
         model.title.setValue("Выбор команды");
-        model.scanUseCase.setScanKeys(BAGE);
+        model.scanChain.setScanKeys(BAGE);
     };
 
     public Runnable finishFinish = () -> {
@@ -288,7 +288,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
         valuesRepository.setPersonName("");
         msg.say("Сканируй бейдж", R.drawable.bage);
         model.title.setValue("Авторизация");
-        model.scanUseCase.clearScanKey();
+        model.scanChain.clearScanKey();
     };
 
     // ----------------------------------------------------------------------------------------
@@ -298,7 +298,7 @@ public class RunnableUseCase extends ru.labirint.core_tsd.interactors.RunnableUs
                 jsons -> {
                     StringHelper last_say = msg.getLastSay();
                     msg.say(String.format("Простой отмечен\nдля снятия\n%s", last_say.get().toString()), R.drawable.smoke);
-                    model.scanUseCase.backScanKey();
+                    model.scanChain.backScanKey();
                 }
         );
 

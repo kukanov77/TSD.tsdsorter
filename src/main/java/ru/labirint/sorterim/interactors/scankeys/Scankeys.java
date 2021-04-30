@@ -16,8 +16,7 @@ public class Scankeys extends ru.labirint.core.scankeys.Scankeys {
     public static final Scankey CANCEL = new Scankey (CMD.CANCEL, "C", "Отмена");
     public static final Scankey FINISH = new Scankey (CMD.FINISH, "F", "Закончить");
     public static final Scankey CMD_DOWN_TIME = new Scankey (CMD.DOWN_TIME, "D", "Простой");
-
-    public static final Scankey BAGE = new Scankey (Prefix.BADGE.toString(), "G", "Бейдж");
+    public static final Scankey BAGE = new Scankey (Prefix.BAGE.toString(), "G", "Бейдж");
     public static final Scankey PLACE = new Scankey (Prefix.PLACE.toString(), "P", "Адрес");
     public static final Scankey STRETCH = new Scankey (Prefix.STRETCH.toString(), "S", "Стрейч");
 
