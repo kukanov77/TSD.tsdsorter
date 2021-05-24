@@ -1,12 +1,12 @@
-package ru.labirint.sorterim.interactors.scankeys;
+package ru.labirint.sorterim.interactors.scanchains;
 
 import ru.labirint.sorterim.entities.CMD;
 
 import ru.labirint.core.entities.Prefix;
-import ru.labirint.core.scankeys.Scankey;
+import ru.labirint.core.scanchains.Scankey;
 
 
-public class Scankeys extends ru.labirint.core.scankeys.Scankeys {
+public class Scankeys extends ru.labirint.core.scanchains.Scankeys {
 
     //QWRYUIHJKLZXVBNM
 

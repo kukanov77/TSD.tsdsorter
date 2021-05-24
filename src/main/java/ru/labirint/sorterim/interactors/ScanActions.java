@@ -15,10 +15,10 @@ import ru.labirint.sorterim.ui.work.WorkViewModel;
 
 import org.json.JSONObject;
 
-import static ru.labirint.sorterim.interactors.scankeys.Scankeys.BAGE;
-import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_ARRANGE;
-import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET;
-import static ru.labirint.sorterim.interactors.scankeys.Scankeys.CMD_GET_ONE;
+import static ru.labirint.sorterim.interactors.scanchains.Scankeys.BAGE;
+import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_ARRANGE;
+import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_GET;
+import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_GET_ONE;
 
 public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
 
