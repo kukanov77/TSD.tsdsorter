@@ -1,5 +1,6 @@
 package ru.labirint.sorterim.ui.work;
 
+import ru.labirint.core.interactors.msg.MsgUse;
 import ru.labirint.sorterim.data.QueryHelper;
 import ru.labirint.sorterim.interactors.ScanActions;
 
@@ -9,13 +10,15 @@ import ru.labirint.sorterim.entities.values.ValuesRepository;
 
 public class WorkViewModel extends ru.labirint.core_tsd.ui.work.WorkViewModel  {
 
-    public WorkViewModel(QueryHelper queryHelper, ValuesRepository valuesRepository) {
-        super(queryHelper, valuesRepository);
+    public WorkViewModel(ValuesRepository valuesRepository,MsgUse msg, ScanChainUse scanChain ) {
+        super(valuesRepository, msg, scanChain);
     }
 
     @Override
     protected void initScanUseCase() {
-        this.scanChain = new ScanChainUse(new Scankeys(), new ScanActions(this));
+        ScanActions scanActions = (ScanActions) scanChain.getScanActions();
+        scanActions.onAttachModel(this);
+        //this.scanChain = new ScanChainUse(new Scankeys(), new ScanActions(this,));
     }
 
 }

@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModelProvider;
 import ru.labirint.sorterim.data.AppDatabase;
 import ru.labirint.sorterim.data.QueryHelper;
 import ru.labirint.sorterim.entities.values.ValuesRepository;
+import ru.labirint.sorterim.interactors.ScanActions;
+import ru.labirint.sorterim.interactors.scanchains.ScanChainUse;
+import ru.labirint.sorterim.interactors.scanchains.Scankeys;
 import ru.labirint.sorterim.ui.work.WorkViewModelFactory;
 
 public class App extends ru.labirint.core_tsd.App  {
@@ -22,9 +25,16 @@ public class App extends ru.labirint.core_tsd.App  {
     }
 
     @Override
+    public void initScanChain() {
+
+    }
+
+    @Override
     protected void initQueryHelper() {
         valuesRepository = new ValuesRepository(getAppDatabase().getValuesDao());
         queryHelper = new QueryHelper(queryRepository, valuesRepository);
+        //todo model null
+        scanChain = new ScanChainUse(new Scankeys(), new ScanActions(null, (QueryHelper) queryHelper, valuesRepository));
     }
 
     @Override
@@ -57,7 +67,7 @@ public class App extends ru.labirint.core_tsd.App  {
 
     @Override
     public ViewModelProvider.Factory getWorkModelFactory() {
-        return  new WorkViewModelFactory(getQueryHelper(), getValuesRepository());
+        return  new WorkViewModelFactory(getQueryHelper(), getValuesRepository(), msg, (ScanChainUse) scanChain);
     }
 
     // ------------------------------------------------------------------------------------------

@@ -7,6 +7,7 @@ import ru.labirint.core.util.messages.Beep;
 import ru.labirint.core.util.messages.tsdmsg.MsgHelper;
 import ru.labirint.core.util.messages.tsdmsg.StringHelper;
 
+import ru.labirint.core_tsd.ui.base.BaseTsdViewModel;
 import ru.labirint.sorterim.R;
 import ru.labirint.sorterim.data.QueryHelper;
 import ru.labirint.sorterim.entities.Place;
@@ -31,12 +32,19 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
 
     // ----------------------------------------------------------------------------------------
 
-    public ScanActions(WorkViewModel model) {
+    public ScanActions(WorkViewModel model, QueryHelper queryHelper, ValuesRepository valuesRepository) {
         super(model);
         this.model = model;
-        this.queryHelper = (QueryHelper) model.queryHelper;
-        this.valuesRepository = (ValuesRepository) model.valuesRepository;
-        this.msg = model.msg;
+        this.queryHelper = queryHelper;
+        this.valuesRepository = valuesRepository;
+        if(model != null){ this.msg = model.msgHelper; }
+    }
+
+    @Override
+    public void onAttachModel(BaseTsdViewModel model) {
+        super.onAttachModel(model);
+        this.model = (WorkViewModel) model;
+        if(model != null){ this.msg = ((WorkViewModel)model).msgHelper; }
     }
 
     // ----------------------------------------------------------------------------------------
@@ -60,7 +68,7 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
                         String name = j.getString("name");
                         valuesRepository.setPersonName(name);
                         msg.say("Сканируй команду", R.drawable.command);
-                        model.title.setValue("Выбор команды");
+                        model.msg.setTitle("Выбор команды");
                     } else {
                         String str_error = j.getString("txt");
                         valuesRepository.setIdPerson(-1);
@@ -78,7 +86,7 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
     // --- расстановка
     public Runnable cmdArrange = () -> {
         msg.say("Сканируй стрейч", R.drawable.box);
-        model.title.setValue("Расстановка");
+        model.msg.setTitle("Расстановка");
     };
     // ----------------------------------------------------------------------------------------
     // --- расстановка - стрейч
@@ -124,7 +132,7 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
     public Runnable cmdArrangeCancel = () -> {
         valuesRepository.clearPlace();
         msg.say("Сканируй стрейч", R.drawable.box);
-        model.title.setValue("Расстановка");
+        model.msg.setTitle("Расстановка");
         model.scanChain.setScanKeys(BAGE, CMD_ARRANGE);
     };
     // ----------------------------------------------------------------------------------------
@@ -149,10 +157,11 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
                                 post.red(String.format("Сними ящик\nСканируй адрес\n%s", j.getString("place")));
                                 post.setBackResource(R.drawable.green);
 
-                                msg.say(txt, post, Beep.BOX);
+
+                                msg.say(txt, post, Beep.BOX, 1000);
                                 valuesRepository.setIdPlace(id_place);
                                 valuesRepository.setPlace(j.getString("place"));
-                                model.title.setValue("Снятие");
+                                model.msg.setTitle("Снятие");
                                 //m.backResource.set(R.drawable.place);
                             } else {
                                 msg.say(String.format("Уложен на адрес\n%s", valuesRepository.getPlace()),"Сканируй стрейч", R.drawable.box);
@@ -204,11 +213,11 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
                     JSONObject j = jsons.getJSONObject(0);
                     Place place = new Place(j);
                     valuesRepository.setPlace(place);
-                    model.title.setValue("Снятие");
+                    model.msg.setTitle("Снятие");
                     msg.say(String.format("Сканируй адрес\n%s", place.getPlace()), R.drawable.place );
                 } else {
                     msg.alert("Нет мест к снятию!", "Сканируй команду");
-                    model.title.setValue("Выбор команды");
+                    model.msg.setTitle("Выбор команды");
                     model.backResource.set(R.drawable.command);
                 }
             }
@@ -252,7 +261,7 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
     // --- снять один
     public Runnable cmdGetOne = () -> {
         msg.say("Сканируй адрес", R.drawable.place);
-        model.title.setValue("Снять один");
+        model.msg.setTitle("Снять один");
     };
     // ----------------------------------------------------------------------------------------
     // --- снять один - адрес
@@ -279,7 +288,7 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
     // --- закончить
     public Runnable finish = () -> {
         msg.say("Сканируй команду", R.drawable.command);
-        model.title.setValue("Выбор команды");
+        model.msg.setTitle("Выбор команды");
         model.scanChain.setScanKeys(BAGE);
     };
 
@@ -287,7 +296,7 @@ public class ScanActions extends ru.labirint.core_tsd.interactors.ScanActions {
         valuesRepository.setIdPerson(-1);
         valuesRepository.setPersonName("");
         msg.say("Сканируй бейдж", R.drawable.bage);
-        model.title.setValue("Авторизация");
+        model.msg.setTitle("Авторизация");
         model.scanChain.clearScanKey();
     };
 
