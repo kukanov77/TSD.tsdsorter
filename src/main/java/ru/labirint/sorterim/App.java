@@ -33,8 +33,7 @@ public class App extends ru.labirint.core_tsd.App  {
     protected void initQueryHelper() {
         valuesRepository = new ValuesRepository(getAppDatabase().getValuesDao());
         queryHelper = new QueryHelper(queryRepository, valuesRepository);
-        //todo model null
-        scanChain = new ScanChainUse(new Scankeys(), new ScanActions(null, (QueryHelper) queryHelper, valuesRepository));
+        scanChain = new ScanChainUse(new Scankeys(), new ScanActions((QueryHelper) queryHelper, valuesRepository, msg));
     }
 
     @Override

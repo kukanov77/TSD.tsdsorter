@@ -48,18 +48,18 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
 //    }
 
     // --------------------------------------------------------------------------------------
-    private String getMulifuncStr() {
-        return "EXEC[dbo].[spTSD_DynamicSorter_Multifunc] @func='%s'";
-        //+
-              //  ",@IdPerson =" + String.valueOf(valuesRepository.getIdPerson());
-    }
+//    private String getMulifuncStr() {
+//        return "EXEC[dbo].[spTSD_DynamicSorter_Multifunc] @func='%s'";
+//        //+
+//              //  ",@IdPerson =" + String.valueOf(valuesRepository.getIdPerson());
+//    }
 
     // --------------------------------------------------------------------------------------
     // --- 27 - fnGetStuffInfoForPerson - авторизация, cканируем бейдж
     public void queryPersonInfo(Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
-                +",@IdPerson=%d"
-                , "fnGetStuffInfoForPerson", valuesRepository.getIdPerson());
+//                +",@IdPerson=%d"
+                , "fnGetStuffInfoForPerson"/*, valuesRepository.getIdPerson()*/);
         queryRepository.execute(new Query("fnGetStuffInfoForPerson", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
@@ -74,24 +74,24 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
     // --- 29 - spTSDPutOnAdress - положить на адрес
     public void querySpTSDPutOnAdress(Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
-                        +",@ID_Place=%d, @ID_Sales=%d, @IdPerson=%d, @ID_Stretch=%d"
-                , "spTSDPutOnAdress",valuesRepository.getIdPlace(), valuesRepository.getIdSales(),valuesRepository.getIdPerson(),valuesRepository.getStretch());
+                        +",@ID_Place=%d, @ID_Sales=%d/*, @IdPerson=%d*/, @ID_Stretch=%d"
+                , "spTSDPutOnAdress",valuesRepository.getIdPlace(), valuesRepository.getIdSales()/*,valuesRepository.getIdPerson()*/,valuesRepository.getStretch());
         queryRepository.execute(new Query("spTSDPutOnAdress", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 30 - spTSDGetPlaceToRemove - запрос места для снятия
     public void querySpTSDGetPlaceToRemove (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
-                +",@IdPerson=%d"
-                , "spTSDGetPlaceToRemove", valuesRepository.getIdPerson());
+                /*+",@IdPerson=%d"*/
+                , "spTSDGetPlaceToRemove"/*, valuesRepository.getIdPerson()*/);
         queryRepository.execute(new Query("spTSDGetPlaceToRemove", str_query, JSONArray.class, true), onResponse);
     }
     // --------------------------------------------------------------------------------------
     // --- 31 - spTSDRemoveFromAdress - запрос снять с адреса
     public void querySpTSDRemoveFromAdress (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
-                        +",@ID_Place=%d,@IdPerson=%d"
-                , "spTSDRemoveFromAdress", valuesRepository.getIdPlace(), valuesRepository.getIdPerson());
+                        +",@ID_Place=%d/*,@IdPerson=%d*/"
+                , "spTSDRemoveFromAdress", valuesRepository.getIdPlace()/*, valuesRepository.getIdPerson()*/);
         queryRepository.execute(new Query("spTSDRemoveFromAdress", str_query, JSONArray.class), onResponse);
     }
     // --------------------------------------------------------------------------------------
@@ -106,8 +106,8 @@ public class QueryHelper extends ru.labirint.core_tsd.data.QueryHelper {
     // -- 33 - spTSDSetDownTime - встать на простой
     public void querySpTSDSetDownTime (Consumer<JSONArray> onResponse){
         String str_query = String.format(getMulifuncStr()
-                        +",@IdPerson=%d"
-                , "spTSDSetDownTime", valuesRepository.getIdPerson());
+                       /* +",@IdPerson=%d"*/
+                , "spTSDSetDownTime"/*, valuesRepository.getIdPerson()*/);
         queryRepository.execute(new Query("spTSDSetDownTime", str_query, JSONArray.class), onResponse);
     }
 
