@@ -52,7 +52,7 @@ public class App extends ru.labirint.core_tsd.App  {
 
     @Override
     public String getAppName() {
-        return "Сортер ИМ";
+        return "(1723) Сортер ИМ";
     }
 
     public ValuesRepository getValuesRepository() {
