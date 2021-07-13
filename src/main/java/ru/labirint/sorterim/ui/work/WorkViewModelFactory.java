@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import ru.labirint.core.helper.msg.MsgHelper;
 import ru.labirint.sorterim.data.QueryHelper;
 import ru.labirint.sorterim.entities.values.ValuesRepository;
-import ru.labirint.sorterim.interactors.scanchains.ScanChainUse;
+import ru.labirint.sorterim.interactors.scanchains.ScanUse;
 
 
 public class WorkViewModelFactory implements ViewModelProvider.Factory {
@@ -16,9 +16,9 @@ public class WorkViewModelFactory implements ViewModelProvider.Factory {
     QueryHelper queryHelper;
     ValuesRepository valuesRepository;
     MsgHelper msg;
-    ScanChainUse scanChainUse;
+    ScanUse scanChainUse;
 
-    public WorkViewModelFactory(QueryHelper queryHelper, ValuesRepository valuesRepository, MsgHelper msg, ScanChainUse scanChainUse) {
+    public WorkViewModelFactory(QueryHelper queryHelper, ValuesRepository valuesRepository, MsgHelper msg, ScanUse scanChainUse) {
         this.queryHelper = queryHelper;
         this.valuesRepository = valuesRepository;
         this.msg = msg;

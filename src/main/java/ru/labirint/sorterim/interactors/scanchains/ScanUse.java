@@ -1,25 +1,25 @@
 package ru.labirint.sorterim.interactors.scanchains;
 
 
-import ru.labirint.core.scanchains.Scankeys;
+import ru.labirint.core.scanchains.ScanEnum;
 import ru.labirint.sorterim.interactors.ScanActions;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.BAGE;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CANCEL;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_ARRANGE;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_DOWN_TIME;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_GET;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.CMD_GET_ONE;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.FINISH;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.PLACE;
-import static ru.labirint.sorterim.interactors.scanchains.Scankeys.STRETCH;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.BAGE;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.CANCEL;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.CMD_ARRANGE;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.CMD_DOWN_TIME;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.CMD_GET;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.CMD_GET_ONE;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.FINISH;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.PLACE;
+import static ru.labirint.sorterim.interactors.scanchains.ScanEnum.STRETCH;
 
 
-public class ScanChainUse extends ru.labirint.core_tsd.interactors.scanchains.ScanChainUse {
+public class ScanUse extends ru.labirint.core_tsd.interactors.scanchains.ScanUse {
 
     ScanActions run;
 
-    public ScanChainUse(Scankeys scankeys, ScanActions run) {
-        super(scankeys, run);
+    public ScanUse(ScanEnum scanEnum, ScanActions run) {
+        super(scanEnum, run);
 
         this.run = run;
 
